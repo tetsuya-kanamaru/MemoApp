@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+// eslint-disable-next-line
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { string } from "prop-types";
 
 export default function Footer(props) {
@@ -7,7 +8,9 @@ export default function Footer(props) {
   return (
     <View style={styles.footer}>
       <Text style={styles.footerText}>{text}</Text>
-      <Text style={styles.footerLink}>{link}</Text>
+      <TouchableOpacity>
+        <Text style={styles.footerLink}>{link}</Text>
+      </TouchableOpacity>
     </View>
   );
 }

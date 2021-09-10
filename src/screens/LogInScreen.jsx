@@ -13,7 +13,7 @@ export default function LogInScreen() {
     <View style={styles.container}>
       <Appbar />
       <View style={styles.inner}>
-        <EnteranceTitle title="Sign Up" />
+        <EnteranceTitle title="Log In" />
         <EnterForm email="Email Address" password="Password" />
         <Button label="submit" />
         <Footer text="Not registered?" link="Sign up here!" />
