@@ -1,7 +1,6 @@
 import React from "react";
-import {
-  View, ScrollView, Text, StyleSheet,
-} from "react-native";
+// eslint-disable-next-line
+import { View, ScrollView, Text, StyleSheet } from "react-native";
 
 import Appbar from "../components/AppBar";
 import CircleButton from "../components/CircleButton";
