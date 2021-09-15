@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 import { string } from "prop-types";
 
 export default function EnterForm(props) {
   const { email, password } = props;
+  const [enterEmail, setEnterEmail] = useState("");
+  const [enterPassword, setEnterPassword] = useState("");
   return (
     <>
-      <TextInput style={styles.input} value={email} />
-      <TextInput style={styles.input} value={password} />
+      <TextInput
+        style={styles.input}
+        value={enterEmail}
+        onChangeText={(text) => {
+          setEnterEmail(text);
+        }}
+        autoCapitalize="none"
+        keyboardType="email-address"
+        placeholder={email}
+        textContentType="emailAddress"
+      />
+      <TextInput
+        style={styles.input}
+        value={enterPassword}
+        onChangeText={(text) => {
+          setEnterPassword(text);
+        }}
+        autoCapitalize="none"
+        placeholder={password}
+        secureTextEntry
+        textContentType="password"
+      />
     </>
   );
 }
