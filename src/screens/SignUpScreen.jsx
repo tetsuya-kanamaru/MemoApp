@@ -2,21 +2,37 @@ import React from "react";
 // eslint-disable-next-line
 import { View, StyleSheet } from "react-native";
 
-import Appbar from "../components/AppBar";
 import Button from "../components/Button";
 import EnteranceTitle from "../components/EnteranceTitle";
 import EnterForm from "../components/EnterForm";
 import Footer from "../components/Footer";
 
-export default function SignUpScreen() {
+export default function SignUpScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <Appbar />
       <View style={styles.inner}>
         <EnteranceTitle title="Sign Up" />
         <EnterForm email="Email Address" password="Password" />
-        <Button label="submit" />
-        <Footer text="Already registered?" link="Log In." />
+        <Button
+          label="Submit"
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "MemoList" }],
+            });
+          }}
+        />
+        <Footer
+          text="Already registered?"
+          link="Log In."
+          onPress={() => {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: "LogIn" }],
+            });
+          }}
+        />
       </View>
     </View>
   );

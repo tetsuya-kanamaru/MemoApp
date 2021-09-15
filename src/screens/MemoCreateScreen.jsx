@@ -2,17 +2,21 @@ import React from "react";
 // eslint-disable-next-line
 import { View, StyleSheet, TextInput } from "react-native";
 
-import AppBar from "../components/AppBar";
 import CircleButton from "../components/CircleButton";
 import KeyboardSafeView from "../components/keyboardSafeView";
 import TextForm from "../components/TextForm";
 
-export default function MemoCreateScreen() {
+export default function MemoCreateScreen(props) {
+  const { navigation } = props;
   return (
     <KeyboardSafeView style={styles.container}>
-      <AppBar />
       <TextForm value="" />
-      <CircleButton name="check" />
+      <CircleButton
+        name="check"
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
     </KeyboardSafeView>
   );
 }
