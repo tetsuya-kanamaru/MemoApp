@@ -17,6 +17,7 @@
     "quotes": 0,
     "react/prop-types": ["error", { "ignore": ["navigation"] }],
     "comma-dangle": "off",
-    "react/jsx-no-bind": 1
+    "react/jsx-no-bind": 1,
+    "import/prefer-default-export": 0
   }
 }
