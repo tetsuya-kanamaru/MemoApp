@@ -30,9 +30,9 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="LogIn"
         screenOptions={{
-          headerStyle: { backgroundColor: "#467fd3" },
+          headerStyle: { backgroundColor: "#D34660" },
           headerTitleStyle: { color: "#fff" },
-          headerTitle: "Memo App",
+          headerTitle: "Simple ToDo",
           headerTintColor: "#fff",
           headerBackTitle: "Back",
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,

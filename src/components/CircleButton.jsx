@@ -25,7 +25,7 @@ CircleButton.defaultProps = {
 
 const styles = StyleSheet.create({
   circleButton: {
-    backgroundColor: "#467fd3",
+    backgroundColor: "#D34660",
     width: 64,
     height: 64,
     borderRadius: 32,
