@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line
 import { View, StyleSheet, Alert, Text } from "react-native";
 
 import firebase from "firebase";
