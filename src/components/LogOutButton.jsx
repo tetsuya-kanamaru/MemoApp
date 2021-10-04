@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+// eslint-disable-next-line
 import { TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import firebase from "firebase";
 import { useNavigation } from "@react-navigation/native";
@@ -6,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function LogOutButton() {
   const navigation = useNavigation();
 
-  function handlePress() {
+  const handlePress = useCallback(() => {
     firebase
       .auth()
       .signOut()
@@ -19,7 +20,7 @@ export default function LogOutButton() {
       .catch(() => {
         Alert.alert("ログアウトに失敗しました");
       });
-  }
+  });
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>

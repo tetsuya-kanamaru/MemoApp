@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 // eslint-disable-next-line
 import { View, StyleSheet, TextInput, Alert } from "react-native";
 import firebase from "firebase";
@@ -30,14 +30,12 @@ export default function LogInScreen(props) {
     return unsubscribe;
   }, []);
 
-  function handlePress() {
+  const handlePress = useCallback(() => {
     setLoading(true);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: "MemoList" }],
@@ -50,7 +48,7 @@ export default function LogInScreen(props) {
       .then(() => {
         setLoading(false);
       });
-  }
+  });
 
   return (
     <View style={styles.container}>

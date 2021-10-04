@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   View,
   Text,
@@ -42,33 +42,31 @@ export default function MemoList(props) {
     }
   }
 
-  function renderItem({ item }) {
-    return (
+  const renderItem = useCallback(({ item }) => (
+    <TouchableOpacity
+      style={styles.memoListItem}
+      onPress={() => {
+        navigation.navigate("MemoDetail", { id: item.id });
+      }}
+    >
+      <View style={styles.container}>
+        <Text style={styles.memoListItemTitle} numberOfLines={1}>
+          {item.bodyText}
+        </Text>
+        <Text style={styles.memoListItemDate}>
+          {dateToString(item.updatedAt)}
+        </Text>
+      </View>
       <TouchableOpacity
-        style={styles.memoListItem}
+        style={styles.memoDelete}
         onPress={() => {
-          navigation.navigate("MemoDetail", { id: item.id });
+          deleteMemo(item.id);
         }}
       >
-        <View style={styles.container}>
-          <Text style={styles.memoListItemTitle} numberOfLines={1}>
-            {item.bodyText}
-          </Text>
-          <Text style={styles.memoListItemDate}>
-            {dateToString(item.updatedAt)}
-          </Text>
-        </View>
-        <TouchableOpacity
-          style={styles.memoDelete}
-          onPress={() => {
-            deleteMemo(item.id);
-          }}
-        >
-          <Feather name="x" size={20} color="#b0b0b0" />
-        </TouchableOpacity>
+        <Feather name="x" size={20} color="#b0b0b0" />
       </TouchableOpacity>
-    );
-  }
+    </TouchableOpacity>
+  ));
 
   return (
     <View>

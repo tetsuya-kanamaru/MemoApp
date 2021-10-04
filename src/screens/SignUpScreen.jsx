@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 // eslint-disable-next-line
 import { View, StyleSheet, TextInput, Alert } from "react-native";
 import firebase from "firebase";
@@ -14,13 +14,11 @@ export default function SignUpScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handlePress() {
+  const handlePress = useCallback(() => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: "MemoList" }],
@@ -30,7 +28,7 @@ export default function SignUpScreen(props) {
         const errorMsg = translateErrors(error.code);
         Alert.alert(errorMsg.title, errorMsg.description);
       });
-  }
+  });
 
   return (
     <View style={styles.container}>

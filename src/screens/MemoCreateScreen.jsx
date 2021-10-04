@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 // eslint-disable-next-line
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, Alert } from "react-native";
 
 import firebase from "firebase";
 
 import CircleButton from "../components/CircleButton";
 import KeyboardSafeView from "../components/keyboardSafeView";
+import { translateErrors } from "../utils";
 // import TextForm from "../components/TextForm";
 
 export default function MemoCreateScreen(props) {
   const { navigation } = props;
   const [bodyText, setBodyText] = useState("");
 
-  function handlePress() {
+  const handlePress = useCallback(() => {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     const ref = db.collection(`users/${currentUser.uid}/memos`);
@@ -21,14 +22,14 @@ export default function MemoCreateScreen(props) {
         bodyText,
         updatedAt: new Date(),
       })
-      .then((docRef) => {
-        console.log("Created!", docRef.id);
+      .then(() => {
         navigation.goBack();
       })
       .catch((error) => {
-        console.log("Error!", error);
+        const errorMsg = translateErrors(error);
+        Alert.alert(errorMsg.title, errorMsg.description);
       });
-  }
+  });
 
   return (
     <KeyboardSafeView style={styles.container}>

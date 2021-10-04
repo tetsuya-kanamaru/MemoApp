@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 // eslint-disable-next-line
 import { View, StyleSheet, TextInput, Alert } from "react-native";
 import { shape, string } from "prop-types";
@@ -13,7 +13,7 @@ export default function MemoEditScreen(props) {
   const { id, bodyText } = route.params;
   const [body, setBody] = useState(bodyText);
 
-  function handlePress() {
+  const handlePress = useCallback(() => {
     const { currentUser } = firebase.auth();
     if (currentUser) {
       const db = firebase.firestore();
@@ -34,7 +34,7 @@ export default function MemoEditScreen(props) {
           Alert.alert(errorMsg.title, errorMsg.description);
         });
     }
-  }
+  });
 
   return (
     <KeyboardSafeView style={styles.container}>
