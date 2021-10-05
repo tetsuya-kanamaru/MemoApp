@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "MemoApp",
-    "slug": "MemoApp",
+    "name": "SimpleToDo",
+    "slug": "SimpleToDo",
     "version": "1.0.0",
     "privacy": "unlisted",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -16,12 +16,17 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "jp.gr.java_conf.SimpleToDo",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "jp.gr.java_conf.SimpleToDo",
+      "versionCode": 1,
+      "permissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/Icon_adaptive_foreground.png",
+        "backgroundImage": "./assets/Icon_adaptive_background.png"
       }
     },
     "web": {
